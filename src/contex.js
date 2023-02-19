@@ -10,7 +10,7 @@ export const AppContextProvider = ({ children }) => {
 
     const [settings, setSettings] = useState({
         theme: localStorage.getItem("theme") || "dark",
-        language: localStorage.getItem("language") || "en-EN"
+        language: localStorage.getItem("language") || "en-US"
     })
 
 
