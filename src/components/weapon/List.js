@@ -1,5 +1,6 @@
-import { SimpleGrid, Stack, Card, LoadingOverlay, Image, Group, Text, Button } from "@mantine/core"
+import { SimpleGrid, Stack, Card, LoadingOverlay, Image, Group, Text, Button, Paper } from "@mantine/core"
 import { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
 import { getApi } from "../../api/valorantApi"
 import { useAppContext } from "../../contex"
@@ -24,6 +25,7 @@ function List() {
     }, [])
 
 
+
     return (
         <Stack>
             {isLoading ? (
@@ -36,27 +38,7 @@ function List() {
                         <SimpleGrid cols={5} spacing="md" breakpoints={[{ maxWidth: 'sm', cols: 2 }, { maxWidth: 'xs', cols: 1 }, { maxWidth: 'md', cols: 2 }, { maxWidth: 'lg', cols: 3 }, { maxWidth: 'xl', cols: 4 }]}>
                             {
                                 weapons?.map((weapon) => (
-                                    <Card shadow="sm" p="lg" radius="md" withBorder key={weapon.uuid}>
-                                        <Card.Section>
-                                            <Image p={10}
-                                                src={weapon.displayIcon}
-                                            />
-
-                                        </Card.Section>
-
-                                        <Group position="apart" mt="md" mb="xs">
-                                            <Text weight={500} align="center">{weapon.displayName}</Text>
-                                        </Group>
-                                        <Group position='center'>
-                                            <Button onClick={() => navigate('detail', {
-                                                state: {
-                                                    weaponId: weapon.uuid,
-                                                }
-                                            })} variant="outline" radius="md" color="red" fullWidth>
-                                                Skins
-                                            </Button>
-                                        </Group>
-                                    </Card>
+                                    <WeaponItem weapon={weapon} key={weapon.uuid} />
                                 ))
                             }
                         </SimpleGrid>
@@ -65,6 +47,32 @@ function List() {
             }
         </Stack>
     )
+}
+
+const WeaponItem = ({ weapon }) => {
+    const navigate = useNavigate();
+    const { t } = useTranslation();
+
+    return <Paper shadow="sm" p="lg" radius="md" withBorder key={weapon.uuid} >
+        <Stack h="100%" justify="space-between">
+            <Image p={10}
+                src={weapon.displayIcon} />
+            <Stack justify="flex-end">
+                <Group position="apart" mt="md" mb="xs">
+                    <Text weight={500} align="center">{weapon.displayName}</Text>
+                </Group>
+                <Group position='center'>
+                    <Button onClick={() => navigate('detail', {
+                        state: {
+                            weaponId: weapon.uuid,
+                        }
+                    })} variant="outline" radius="md" color="red" fullWidth>
+                        {t('ButtonSkin')}
+                    </Button>
+                </Group>
+            </Stack>
+        </Stack>
+    </Paper >
 }
 
 

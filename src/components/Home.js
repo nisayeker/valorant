@@ -8,12 +8,13 @@ function Home() {
     const { t } = useTranslation()
 
     return (
-        <Box >
+        <Box h="100%">
             <BackgroundImage
                 src="https://wallpaperaccess.com/full/3037928.jpg"
                 radius="xs"
+                h="100%"
             >
-                <Stack mih={800}>
+                <Stack  h="100%">
                     <Center p="md" style={{ margin: "auto" }}>
                         <Stack>
                             <Text style={{

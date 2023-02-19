@@ -31,7 +31,7 @@ function Detail() {
 
     return (
         <>
-            <Modal opened={true} size="calc(70vw - 87px)" onClose={() => navigate("/agent")} centered={true} withCloseButton={fullWidth} style={{ padding: 0 }} fullScreen={fullWidth}
+            <Modal opened={true} size="65%" onClose={() => navigate("/agent")} centered={true} withCloseButton={fullWidth} style={{ padding: 0 }} fullScreen={fullWidth}
                 overlayOpacity={0.55}
                 overlayBlur={5}>
                 <BackgroundImage p={50} style={{ backgroundColor: '#ff4655' }} src='https://pbs.twimg.com/media/EVSLGyeUYAAzxAp.jpg' bg="red">
@@ -42,6 +42,11 @@ function Detail() {
                                     src={detail?.fullPortrait}
                                     alt="Norway"
                                     sx={{ scale: "1.2", transition: "all linear 400ms" }}
+                                    styles={{
+                                        image: {
+                                            filter: "drop-shadow(0px 0px 70px #000)"
+                                        }
+                                    }}
                                 />
                             </BackgroundImage>
                             <Grid gutter="md">

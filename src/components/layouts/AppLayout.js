@@ -131,7 +131,7 @@ function AppLayout() {
                                 mr="xl"
                             />
                         </MediaQuery>
-                        <Text style={{ display: 'flex', alignItems: 'center' }} fw={900}>VALORANT API</Text>
+                        <Text style={{ display: 'flex', alignItems: 'center' }} fw={900}>VALORANT WIKI</Text>
                     </div>
                 </Header>
             }
